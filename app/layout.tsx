@@ -1,11 +1,12 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import type { Appearance } from "@clerk/types";
 import "./globals.css";
 import Script from "next/script";
 import localFont from "next/font/local";
-import { templateMetadata } from "./_template/content/metadata";
 
-export const metadata = templateMetadata;
+export const metadata = {
+  title: "LeafMart",
+  description: "Your one-stop shop for digital products",
+};
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +34,7 @@ const clerkAppearanceObject = {
       "bg-black border border-black border-solid hover:bg-white hover:text-black",
     card: "bg-[#fafafa]",
   },
-} satisfies Appearance;
+}
 
 export default function RootLayout({
   children,

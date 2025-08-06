@@ -189,68 +189,68 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-[57px] z-30 w-full overflow-hidden border-b border-slate-700/30 bg-slate-900/90 backdrop-blur-lg md:hidden"
+            className="fixed top-[57px] z-30 w-full bg-slate-900/95 backdrop-blur-xl md:hidden"
           >
-            <div className="flex flex-col space-y-4 px-5 py-5">
-              {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search…"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="w-full rounded-full border border-slate-600 bg-slate-800/60 py-2 pl-9 pr-4 text-sm placeholder-slate-400 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
-                />
-                {results.length > 0 && (
-                  <ul className="mt-2 space-y-1">
-                    {results.map((p) => (
-                      <li
-                        key={p.id}
-                        onClick={() => {
-                          router.push(`/products/${p.slug}`);
-                          setOpen(false);
-                          setQuery('');
-                        }}
-                        className="cursor-pointer rounded px-3 py-2 text-sm hover:bg-slate-700"
-                      >
-                        {p.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+            {/* Search bar */}
+            <div className="px-5 pt-5">
+              <input
+                type="text"
+                placeholder="Search products…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="w-full rounded-full border border-transparent bg-slate-800/60 py-3 px-4 text-base placeholder-slate-400 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+              />
+              {results.length > 0 && (
+                <ul className="mt-3 space-y-2 text-white">
+                  {results.map((p) => (
+                    <li
+                      key={p.id}
+                      onClick={() => {
+                        router.push(`/products/${p.slug}`);
+                        setOpen(false);
+                        setQuery('');
+                      }}
+                      className="cursor-pointer rounded-lg bg-slate-800/50 p-3 text-center text-sm hover:bg-slate-700/60"
+                    >
+                      {p.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
 
-              {/* Links */}
+            {/* Navigation links */}
+            <nav className="flex flex-col items-center space-y-5 px-6 py-8 text-lg font-medium text-white">
               {navLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-md p-2 text-sm font-medium hover:bg-slate-700"
+                  className="w-full rounded-lg py-3 text-center transition hover:bg-slate-800/60"
                 >
                   {l.label}
                 </Link>
               ))}
+            </nav>
 
-              <div className="pt-2">
-                <SignedOut>
-                  <SignInButton>
-                    <button
-                      onClick={() => setOpen(false)}
-                      className="w-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 py-2.5 text-sm font-semibold shadow-lg shadow-cyan-500/30 transition hover:shadow-cyan-500/60"
-                    >
-                      Sign In
-                    </button>
-                  </SignInButton>
-                </SignedOut>
-                <SignedIn>
-                  <div className="flex items-center space-x-3 rounded-md p-2 hover:bg-slate-700">
-                    <UserButton />
-                    <span>Account</span>
-                  </div>
-                </SignedIn>
-              </div>
+            {/* Sign-in / Account */}
+            <div className="border-t border-slate-700/30 px-6 py-6">
+              <SignedOut>
+                <SignInButton>
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="w-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 py-3 text-base font-semibold shadow-lg shadow-cyan-500/30 transition hover:shadow-cyan-500/60"
+                  >
+                    Sign In
+                  </button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <div className="flex items-center justify-center space-x-3 rounded-lg bg-slate-800/50 py-3 text-white transition hover:bg-slate-700/60">
+                  <UserButton />
+                  <span>Account</span>
+                </div>
+              </SignedIn>
             </div>
           </motion.div>
         )}

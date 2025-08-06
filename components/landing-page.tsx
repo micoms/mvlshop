@@ -10,18 +10,18 @@ export default function LandingPage() {
 
   return (
     <>
-      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-zinc-900 text-white">
-        {/* subtle animated background */}
+      <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-zinc-900 px-4 text-white">
+        {/* animated background */}
         <div className="pointer-events-none absolute inset-0 h-full w-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0)_50%)]" />
 
-        {/* top bar */}
+        {/* top bar – same glass, smaller padding on mobile */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="absolute top-0 left-0 z-10 flex w-full justify-center px-6 pt-6 sm:px-8 sm:pt-8 lg:justify-start"
+          className="absolute top-0 left-0 z-10 flex w-full justify-center px-4 pt-5 sm:px-6 sm:pt-6 lg:justify-start lg:px-8 lg:pt-8"
         >
-          <div className="flex items-center space-x-2 rounded-full border border-slate-700/50 bg-slate-800/40 px-5 py-2 text-sm font-medium text-slate-200 backdrop-blur-md ">
+          <div className="flex items-center space-x-1.5 rounded-full border border-slate-700/50 bg-slate-800/40 px-4 py-2 text-xs font-medium text-slate-200 backdrop-blur-md sm:px-5 sm:py-2 sm:text-sm">
             <span>Discover the best digital tools at</span>
             <span className="font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">
               LeafMart
@@ -29,57 +29,57 @@ export default function LandingPage() {
           </div>
         </motion.div>
 
-        {/* headline */}
+        {/* headline – scales fluidly, keeps line break control */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-          className="text-center text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+          className="text-center text-[2.75rem] font-extrabold leading-tight tracking-tight xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
         >
           Your One-Stop
-          <br />
+          <br className="hidden xs:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">
-            Digital Marketplace
+            {" "}Digital Marketplace
           </span>
         </motion.h1>
 
-        {/* description */}
+        {/* description – shorter width on mobile so lines don’t run too long */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-4 max-w-xl text-center text-base text-slate-300 sm:text-lg"
+          className="mt-3 max-w-sm text-center text-sm text-slate-300 xs:max-w-md sm:mt-4 sm:max-w-lg sm:text-base md:text-lg"
         >
           Explore curated software, templates, plugins and more — all in one
           place, hand-picked for creators and makers.
         </motion.p>
 
-        {/* cta */}
+        {/* cta – grows with screen, no full-width on mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.6, ease: 'easeOut' }}
-          className="mt-10"
+          className="mt-8 sm:mt-10"
         >
           <a
             href="/products"
-            className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-cyan-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400"
+            className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-cyan-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 sm:px-8 sm:py-4 sm:text-base"
           >
             <span className="relative z-10">Browse Products</span>
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 opacity-0 blur-xl transition-opacity group-hover:opacity-60" />
           </a>
         </motion.div>
 
-        {/* floating particles (optional eye-candy) */}
+        {/* floating particles – same look, slightly fewer on mobile for perf */}
         {mounted && (
           <div className="pointer-events-none absolute inset-0">
-            {[...Array(30)].map((_, i) => (
+            {[...Array(typeof window !== 'undefined' && window.innerWidth < 768 ? 15 : 30)].map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute h-1 w-1 rounded-full bg-cyan-300/40"
                 initial={{
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
+                  x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                  y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
                   opacity: 0,
                 }}
                 animate={{

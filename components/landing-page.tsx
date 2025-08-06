@@ -14,21 +14,6 @@ export default function LandingPage() {
         {/* animated background */}
         <div className="pointer-events-none absolute inset-0 h-full w-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0)_50%)]" />
 
-        {/* top bar – same glass, smaller padding on mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="absolute top-0 left-0 z-10 flex w-full justify-center px-4 pt-5 sm:px-6 sm:pt-6 lg:justify-start lg:px-8 lg:pt-8"
-        >
-          <div className="flex items-center space-x-1.5 rounded-full border border-slate-700/50 bg-slate-800/40 px-4 py-2 text-xs font-medium text-slate-200 backdrop-blur-md sm:px-5 sm:py-2 sm:text-sm">
-            <span>Discover the best digital tools at</span>
-            <span className="font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">
-              LeafMart
-            </span>
-          </div>
-        </motion.div>
-
         {/* headline – scales fluidly, keeps line break control */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

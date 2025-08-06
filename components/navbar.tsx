@@ -77,7 +77,7 @@ export default function Navbar() {
       >
         <Link href="/" className="text-xl font-bold">
           <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">
-            LeafMart
+            MVL
           </span>
         </Link>
 
@@ -159,7 +159,7 @@ export default function Navbar() {
       >
         <Link href="/" className="text-lg font-bold">
           <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">
-            LeafMart
+            MVL
           </span>
         </Link>
 

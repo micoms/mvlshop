@@ -4,7 +4,7 @@ import Script from "next/script";
 import localFont from "next/font/local";
 
 export const metadata = {
-  title: "LeafMart",
+  title: "MVL",
   description: "Your one-stop shop for digital products",
 };
 
